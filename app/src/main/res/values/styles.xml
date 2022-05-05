@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorAccent">@color/solid_red</item>
+        <item name="colorPrimary">@color/solid_blue</item>
+        <item name="colorPrimaryDark">@color/solid_blue</item>
+    </style>
+
+    <style name="AppTheme.Yellow" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorAccent">@color/solid_yellow</item>
+        <item name="colorPrimary">#2196F3</item>
+    </style>
+</resources>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".investor.AddInvestorActivity">
+
+    <ProgressBar
+        android:id="@+id/add_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/add_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/solid_blue" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Name"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/company_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Company ID"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Phone"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/nrc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="NRC Number"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Address"
+                    android:inputType="text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/plan_811_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:hint="(8% to 11%)"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/plan_811_percent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="%"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/date_811"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:drawableEnd="@drawable/ic_calendar" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/plan_58_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:hint="(5% to 8%)"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/plan_58_percent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="%"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/date_58"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:drawableEnd="@drawable/ic_calendar" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <EditText
+                        android:id="@+id/plan_456_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:hint="(4% to 6%)"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/plan_456_percent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:hint="%"
+                        android:inputType="number" />
+
+                    <Button
+                        android:id="@+id/date_456"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:drawableEnd="@drawable/ic_calendar" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp">
+
+                    <ImageView
+                        android:id="@+id/img_one"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:background="@color/solid_red"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/img_two"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:background="@color/light_blue"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/img_three"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@color/solid_yellow"
+                        android:layout_height="200dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp">
+
+                    <Button
+                        android:id="@+id/btn_one"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Clear"
+                        android:textColor="@color/white"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btn_two"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Clear"
+                        android:textColor="@color/white"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btn_three"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Clear"
+                        android:textColor="@color/white"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_add_investor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:layout_marginEnd="4dp"
+                    android:text="Add" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+</RelativeLayout>
