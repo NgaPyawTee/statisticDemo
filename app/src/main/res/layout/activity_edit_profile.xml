@@ -28,351 +28,446 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/edit_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Name"
-                    android:inputType="text" />
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edit_company_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Company ID"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Phone"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edit_nrc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:hint="NRC Number"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Address"
+                android:inputType="text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp">
 
                 <EditText
-                    android:id="@+id/edit_company_id"
-                    android:layout_width="match_parent"
+                    android:id="@+id/edit_cash_amount"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Company ID"
-                    android:inputType="text" />
-
-                <EditText
-                    android:id="@+id/edit_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Phone"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:hint="Cash bonus amount"
                     android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/edit_nrc"
-                    android:layout_width="match_parent"
+                    android:id="@+id/edit_cash_percent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="NRC Number"
-                    android:inputType="text" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:hint="%"
+                    android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/edit_address"
-                    android:layout_width="match_parent"
+                    android:id="@+id/edit_cash_profit"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Address"
-                    android:inputType="text" />
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:hint="Profit" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/edit_cash_amount"
-                        android:layout_width="0dp"
+                        android:id="@+id/edit_plan_811_amount"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="4dp"
-                        android:layout_weight="3"
+                        android:layout_above="@+id/edit_plan_811_percent"
+                        android:layout_centerInParent="true"
                         android:gravity="center"
-                        android:hint="Cash bonus amount"
+                        android:hint="(8% to 11%)"
                         android:inputType="number" />
 
                     <EditText
-                        android:id="@+id/edit_cash_percent"
-                        android:layout_width="0dp"
+                        android:id="@+id/edit_plan_811_percent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:hint="%"
                         android:inputType="number" />
 
+                    <Button
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/edit_date_811"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/edit_plan_811_percent"
+                        android:layout_marginTop="12dp"
+                        android:drawableEnd="@drawable/ic_calendar" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/first_ex_img"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/save_date_first_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@color/solid_red"
+                android:text="Save for 1st plan"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
                     <EditText
-                        android:id="@+id/edit_cash_profit"
-                        android:layout_width="0dp"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/edit_plan_58_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/edit_plan_58_percent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:hint="(5% to 8%)"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/edit_plan_58_percent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="4dp"
-                        android:gravity="start"
-                        android:hint="Profit"
-                        android:layout_weight="2" />
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:hint="%"
+                        android:inputType="number" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_marginEnd="16dp"
+                    <Button
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/edit_date_58"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_below="@+id/edit_plan_58_percent"
+                        android:layout_marginTop="12dp"
+                        android:drawableEnd="@drawable/ic_calendar" />
 
-                        <EditText
-                            android:id="@+id/edit_plan_811_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:hint="(8% to 11%)"
-                            android:inputType="number" />
+                </RelativeLayout>
 
-                        <EditText
-                            android:id="@+id/edit_plan_811_percent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:gravity="center"
-                            android:hint="%"
-                            android:inputType="number" />
 
-                        <Button
-                            android:id="@+id/edit_date_811"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
-                            android:drawableEnd="@drawable/ic_calendar" />
+                <ImageView
+                    android:id="@+id/second_ex_img"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1" />
 
-                    </LinearLayout>
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/first_ex_img"
-                        android:layout_width="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
+            <Button
+                android:id="@+id/save_date_second_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@color/solid_blue"
+                android:text="Save for 2nd plan"
+                android:textColor="@color/white" />
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp">
 
-                <Button
-                    android:id="@+id/save_date_first_plan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="Save for 1st plan"
-                    android:background="@color/solid_red"
-                    android:textColor="@color/white" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <EditText
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/edit_plan_456_amount"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="2"
-                        android:layout_marginEnd="16dp">
+                        android:layout_gravity="center_vertical"
+                        android:layout_above="@+id/edit_plan_456_percent"
+                        android:gravity="center"
+                        android:hint="(4% to 6%)"
+                        android:inputType="number" />
 
-                        <EditText
-                            android:id="@+id/edit_plan_58_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:hint="(5% to 8%)"
-                            android:inputType="number" />
-
-                        <EditText
-                            android:id="@+id/edit_plan_58_percent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:gravity="center"
-                            android:hint="%"
-                            android:inputType="number" />
-
-                        <Button
-                            android:id="@+id/edit_date_58"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
-                            android:drawableEnd="@drawable/ic_calendar" />
-
-                    </LinearLayout>
-
-
-                    <ImageView
-                        android:id="@+id/second_ex_img"
-                        android:layout_width="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/save_date_second_plan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="Save for 2nd plan"
-                    android:background="@color/solid_blue"
-                    android:textColor="@color/white" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:orientation="vertical"
+                    <EditText
+                        android:id="@+id/edit_plan_456_percent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp">
+                        android:layout_gravity="center_vertical"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:hint="%"
+                        android:inputType="number" />
 
-                        <EditText
-                            android:id="@+id/edit_plan_456_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="4dp"
-                            android:gravity="center"
-                            android:hint="(4% to 6%)"
-                            android:inputType="number" />
+                    <Button
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/edit_date_456"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/edit_plan_456_percent"
+                        android:drawableEnd="@drawable/ic_calendar" />
 
-                        <EditText
-                            android:id="@+id/edit_plan_456_percent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:gravity="center"
-                            android:hint="%"
-                            android:inputType="number" />
+                </RelativeLayout>
 
-                        <Button
-                            android:id="@+id/edit_date_456"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
-                            android:drawableEnd="@drawable/ic_calendar" />
+                <ImageView
+                    android:id="@+id/third_ex_img"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1" />
 
-                    </LinearLayout>
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/third_ex_img"
-                        android:layout_width="0dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
+            <Button
+                android:id="@+id/save_date_final_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@color/solid_yellow"
+                android:text="Save for final plan"
+                android:textColor="@color/white" />
 
 
-                <Button
-                    android:id="@+id/save_date_final_plan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:text="Save for final plan"
-                    android:background="@color/solid_yellow"
-                    android:textColor="@color/white" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/edit_img_one"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@color/solid_red"
-                        android:layout_weight="1" />
+                        android:background="@color/solid_red"/>
 
-                    <ImageView
-                        android:id="@+id/edit_img_two"
-                        android:layout_width="0dp"
-                        android:layout_height="200dp"
-                        android:background="@color/light_blue"
-                        android:layout_marginStart="4dp"
-                        android:layout_weight="1" />
+                    <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/edit_img_three"
-                        android:layout_width="0dp"
-                        android:layout_marginStart="4dp"
-                        android:background="@color/solid_yellow"
-                        android:layout_height="200dp"
-                        android:layout_weight="1" />
+                        <ImageView
+                            app:tint="@color/solid_red"
+                            android:id="@+id/download_one"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="12dp"
+                            android:src="@drawable/ic_download"
+                            />
+
+
+                        <ImageView
+                            app:tint="@color/solid_red"
+                            android:id="@+id/clear_one"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="12dp"
+                            android:src="@drawable/ic_close" />
+
+                    </RelativeLayout>
+
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/edit_btn_one"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Clear"
-                        android:textColor="@color/white"
-                        android:layout_weight="1" />
+                    <ImageView
+                        android:id="@+id/edit_img_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/light_blue"/>
 
-                    <Button
-                        android:id="@+id/edit_btn_two"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Clear"
-                        android:textColor="@color/white"
-                        android:layout_weight="1" />
+                    <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <Button
-                        android:id="@+id/edit_btn_three"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Clear"
-                        android:textColor="@color/white"
-                        android:layout_weight="1" />
+                        <ImageView
+                            app:tint="@color/light_blue"
+                            android:layout_marginStart="12dp"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/download_two"
+                            android:layout_width="50dp"
+                            android:src="@drawable/ic_download"
+                            android:layout_height="wrap_content" />
+
+
+                        <ImageView
+                            app:tint="@color/light_blue"
+                            android:layout_marginEnd="12dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_close"
+                            android:id="@+id/clear_two"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/edit_img_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/solid_yellow"/>
+
+                    <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            app:tint="@color/solid_yellow"
+                            android:layout_marginStart="12dp"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/download_three"
+                            android:layout_width="50dp"
+                            android:src="@drawable/ic_download"
+                            android:layout_height="wrap_content" />
+
+
+                        <ImageView
+                            app:tint="@color/solid_yellow"
+                            android:layout_marginEnd="12dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_close"
+                            android:id="@+id/clear_three"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <EditText
                     android:id="@+id/edit_pre_profit"
@@ -390,8 +485,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="update"
                     android:background="@color/black"
+                    android:text="update"
                     android:textColor="@color/white" />
 
             </LinearLayout>

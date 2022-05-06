@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,6 +33,8 @@ import com.homework.statisticdemo.R;
 import com.homework.statisticdemo.model.Date;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -40,8 +43,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private EditText name, companyID, phone, nrc, address, amount811, percent811, amount58, percent58, amount456, percent456,
             cashAmount, cashPercent, cashProfit, preProfit;
-    private ImageView imageView1, imageView2, imageView3;
-    private Button date811, date58, date456, saveFirst, saveSecond, saveFinal, btnUpdate, editBtn1, editBtn2, editBtn3;
+    private ImageView imageView1, imageView2, imageView3, exImgView1, exImgView2, exImgView3, downBtn1, downBtn2, downBtn3, clearBtn1, clearBtn2, clearBtn3;
+    private Button date811, date58, date456, saveFirst, saveSecond, saveFinal, btnUpdate;
     private ProgressBar progressBar;
     private LinearLayout linearLayout;
     private Toolbar toolbar;
@@ -50,7 +53,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     private DatePickerDialog.OnDateSetListener listener1, listener2, listener3;
 
-    private Uri imgUri1, imgUri2, imgUri3;
+    private Uri imgUri1, imgUri2, imgUri3, imgUri4, imgUri5, imgUri6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +113,17 @@ public class EditProfileActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.edit_progress_bar);
         linearLayout = findViewById(R.id.edit_linear_layout);
 
-        editBtn1 = findViewById(R.id.edit_btn_one);
-        editBtn2 = findViewById(R.id.edit_btn_two);
-        editBtn3 = findViewById(R.id.edit_btn_three);
+        exImgView1 = findViewById(R.id.first_ex_img);
+        exImgView2 = findViewById(R.id.second_ex_img);
+        exImgView3 = findViewById(R.id.third_ex_img);
+
+        downBtn1 = findViewById(R.id.download_one);
+        downBtn2 = findViewById(R.id.download_two);
+        downBtn3 = findViewById(R.id.download_three);
+
+        clearBtn1 = findViewById(R.id.clear_one);
+        clearBtn2 = findViewById(R.id.clear_two);
+        clearBtn3 = findViewById(R.id.clear_three);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +202,27 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        exImgView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenFileChooser4();
+            }
+        });
+
+        exImgView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenFileChooser5();
+            }
+        });
+
+        exImgView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OpenFileChooser6();
+            }
+        });
+
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -212,7 +244,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        editBtn1.setOnClickListener(new View.OnClickListener() {
+        clearBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imgUri1 = null;
@@ -221,7 +253,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        editBtn2.setOnClickListener(new View.OnClickListener() {
+        clearBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imgUri2 = null;
@@ -230,7 +262,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        editBtn3.setOnClickListener(new View.OnClickListener() {
+        clearBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imgUri3 = null;
@@ -261,6 +293,27 @@ public class EditProfileActivity extends AppCompatActivity {
         startActivityForResult(intent, 3);
     }
 
+    private void OpenFileChooser4() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 4);
+    }
+
+    private void OpenFileChooser5() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 5);
+    }
+
+    private void OpenFileChooser6() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 6);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -277,6 +330,18 @@ public class EditProfileActivity extends AppCompatActivity {
             imgUri3 = data.getData();
             imageView3.setBackgroundResource(android.R.color.transparent);
             imageView3.setImageURI(imgUri3);
+        }else if (requestCode == 4 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imgUri4 = data.getData();
+            exImgView1.setBackgroundResource(android.R.color.transparent);
+            Picasso.get().load(imgUri4).fit().into(exImgView1);
+        }else if (requestCode == 5 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imgUri5 = data.getData();
+            exImgView2.setBackgroundResource(android.R.color.transparent);
+            Picasso.get().load(imgUri5).fit().into(exImgView2);
+        }else if (requestCode == 6 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imgUri6 = data.getData();
+            exImgView3.setBackgroundResource(android.R.color.transparent);
+            Picasso.get().load(imgUri6).fit().into(exImgView3);
         }
     }
 
@@ -314,32 +379,59 @@ public class EditProfileActivity extends AppCompatActivity {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-    ;
+    };
 
     private void saveFirstDate() {
         String amount = amount811.getText().toString();
         String percent = percent811.getText().toString();
         String date = date811.getText().toString();
         String currentTime = String.valueOf(System.currentTimeMillis());
-        String imageUrl = imgUri1.toString();
-        Uri uri1 = imgUri1;
+        String imageUrl = "";
 
         if (amount.isEmpty() | percent.isEmpty() | date.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Insufficient Data", Toast.LENGTH_SHORT).show();
         } else {
-            if (!imageUrl.trim().equals("")) {
+            progressBar.setVisibility(View.VISIBLE);
                 collRef.document(id).collection("First Date").add(new Date(amount, percent, date, currentTime, imageUrl))
                         .addOnSuccessListener(this, new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
-                                saveFirst.setText("Saved");
-                                saveFirst.setClickable(false);
+                                if (imgUri4 != null) {
+                                    StorageReference fileRef = storageReference.child(name.getText().toString() + "/Expired Date/First Date/"
+                                            +currentTime+"." + getFileExtension(imgUri4));
+                                    fileRef.putFile(imgUri4).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                           fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                               @Override
+                                               public void onSuccess(Uri uri) {
+                                                   collRef.document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                       @Override
+                                                       public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                           StorageReference deleRef = FirebaseStorage.getInstance().getReferenceFromUrl(documentSnapshot.getString("imgUrlOne"));
+                                                           deleRef.delete();
+                                                           collRef.document(id).update("imgUrlOne","");
+                                                           collRef.document(id).collection("First Date").document(documentReference.getId())
+                                                                   .update("imageUrl",uri.toString());
+
+                                                           progressBar.setVisibility(View.GONE);
+                                                           Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
+                                                           saveFirst.setText("Saved");
+                                                           saveFirst.setClickable(false);
+                                                       }
+                                                   });
+                                               }
+                                           });
+                                        }
+                                    });
+                                }else{
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(EditProfileActivity.this, "Saved pre-date without image", Toast.LENGTH_SHORT).show();
+                                    saveFirst.setText("Saved");
+                                    saveFirst.setClickable(false);
+                                }
                             }
                         });
-            }
         }
     }
 
@@ -353,29 +445,46 @@ public class EditProfileActivity extends AppCompatActivity {
         if (amount.isEmpty() | percent.isEmpty() | date.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Insufficient Data", Toast.LENGTH_SHORT).show();
         } else {
+            progressBar.setVisibility(View.VISIBLE);
             collRef.document(id).collection("Second Date").add(new Date(amount, percent, date, currentTime, imageUrl))
                     .addOnSuccessListener(this, new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            StorageReference fileRef = FirebaseStorage.getInstance().getReference(name.getText().toString())
-                                    .child("Expired Date/Second Date/" + System.currentTimeMillis() + "." + getFileExtension(imgUri2));
-                            fileRef.putFile(imgUri2).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            collRef.document(id).update("imgUrlTwo", "");
-                                            collRef.document(id).collection("Second Date").document(documentReference.getId())
-                                                    .update("imageUrl", uri.toString());
+                            if (imgUri5 != null) {
+                                StorageReference fileRef = FirebaseStorage.getInstance().getReference(name.getText().toString())
+                                        .child("Expired Date/Second Date/" + date + "." + getFileExtension(imgUri5));
+                                fileRef.putFile(imgUri5).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                collRef.document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        StorageReference deleRef = FirebaseStorage.getInstance().getReferenceFromUrl(documentSnapshot.getString("imgUrlTwo"));
+                                                        deleRef.delete();
 
-                                            Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
-                                            saveSecond.setText("Saved");
-                                            saveSecond.setClickable(false);
-                                        }
-                                    });
-                                }
-                            });
+                                                        collRef.document(id).update("imgUrlTwo", "");
+                                                        collRef.document(id).collection("Second Date").document(documentReference.getId())
+                                                                .update("imageUrl", uri.toString());
+
+                                                        progressBar.setVisibility(View.GONE);
+                                                        Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
+                                                        saveSecond.setText("Saved");
+                                                        saveSecond.setClickable(false);
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            } else {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(EditProfileActivity.this, "Saved pre-date without image", Toast.LENGTH_SHORT).show();
+                                saveSecond.setText("Saved");
+                                saveSecond.setClickable(false);
+                            }
                         }
                     });
         }
@@ -391,13 +500,47 @@ public class EditProfileActivity extends AppCompatActivity {
         if (amount.isEmpty() | percent.isEmpty() | date.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Insufficient Data", Toast.LENGTH_SHORT).show();
         } else {
+            progressBar.setVisibility(View.VISIBLE);
             collRef.document(id).collection("Final Date").add(new Date(amount, percent, date, currentTime, imageUrl))
                     .addOnSuccessListener(this, new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
-                            saveFinal.setText("Saved");
-                            saveFinal.setClickable(false);
+                            if (imgUri6 != null){
+                                StorageReference fileRef = storageReference.child(name.getText().toString()+"/Expired Date/Final Date/"
+                                +System.currentTimeMillis()+"."+getFileExtension(imgUri6));
+                                fileRef.putFile(imgUri6).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                collRef.document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        StorageReference deleRef = FirebaseStorage.getInstance().getReferenceFromUrl(documentSnapshot.getString("imgUrlThree"));
+                                                        deleRef.delete();
+
+                                                        collRef.document(id).update("imgUrlThree","");
+                                                        collRef.document(id).collection("Final Date").document(documentReference.getId())
+                                                                .update("imageUrl",uri.toString());
+
+                                                        progressBar.setVisibility(View.GONE);
+                                                        Toast.makeText(EditProfileActivity.this, "Saved pre-date", Toast.LENGTH_SHORT).show();
+                                                        saveFinal.setText("Saved");
+                                                        saveFinal.setClickable(false);
+                                                    }
+                                                });
+
+                                            }
+                                        });
+                                    }
+                                });
+                            }else {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(EditProfileActivity.this, "Saved pre-date without image", Toast.LENGTH_SHORT).show();
+                                saveFinal.setText("Saved");
+                                saveFinal.setClickable(false);
+                            }
                         }
                     });
         }
@@ -452,6 +595,50 @@ public class EditProfileActivity extends AppCompatActivity {
             collRef.document(id).update("date456", date456.getText().toString());
         }
 
+        if (imgUri1 != null){
+            StorageReference fileRef = storageReference.child(name.getText().toString()+"/Ongoing Date/"+"First Date."+getFileExtension(imgUri1));
+            fileRef.putFile(imgUri1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            collRef.document(id).update("imgUrlOne",uri.toString());
+                        }
+                    });
+                }
+            });
+        }
+
+        if (imgUri2 != null){
+            StorageReference fileRef = storageReference.child(name.getText().toString()+"/Ongoing Date/"+"Second Date."+getFileExtension(imgUri2));
+            fileRef.putFile(imgUri2).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            collRef.document(id).update("imgUrlTwo",uri.toString());
+                        }
+                    });
+                }
+            });
+        }
+
+        if (imgUri3 != null){
+            StorageReference fileRef = storageReference.child(name.getText().toString()+"/Ongoing Date/"+"Final Date."+getFileExtension(imgUri3));
+            fileRef.putFile(imgUri3).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            collRef.document(id).update("imgUrlThree",uri.toString());
+                        }
+                    });
+                }
+            });
+        }
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -460,7 +647,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 Toast.makeText(EditProfileActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        }, 3000);
+        }, 5000);
     }
 
     @Override
@@ -534,25 +721,19 @@ public class EditProfileActivity extends AppCompatActivity {
                             cashProfit.setText(documentSnapshot.getString("cashProfit"));
                         }
 
-                        if (documentSnapshot.getString("imgUrlOne").equals("")) {
-                            return;
-                        } else {
+                        if (!documentSnapshot.getString("imgUrlOne").equals("")) {
                             imageView1.setBackgroundResource(android.R.color.transparent);
-                            Picasso.get().load(documentSnapshot.getString("imgUrlOne")).into(imageView1
-                            );                        }
-
-                        if (documentSnapshot.getString("imgUrlTwo").equals("")) {
-                            return;
-                        } else {
-                            imageView2.setBackgroundResource(android.R.color.transparent);
-                            Picasso.get().load(documentSnapshot.getString("imgUrlTwo")).into(imageView2);
+                            Picasso.get().load(documentSnapshot.getString("imgUrlOne")).fit().into(imageView1);
                         }
 
-                        if (documentSnapshot.getString("imgUrlThree").equals("")) {
-                            return;
-                        } else {
+                        if (!documentSnapshot.getString("imgUrlTwo").equals("")) {
+                            imageView2.setBackgroundResource(android.R.color.transparent);
+                            Picasso.get().load(documentSnapshot.getString("imgUrlTwo")).fit().into(imageView2);
+                        }
+
+                        if (!documentSnapshot.getString("imgUrlThree").equals("")) {
                             imageView3.setBackgroundResource(android.R.color.transparent);
-                            Picasso.get().load(documentSnapshot.getString("imgUrlThree")).into(imageView3);
+                            Picasso.get().load(documentSnapshot.getString("imgUrlThree")).fit().into(imageView3);
                         }
                     }
                 });

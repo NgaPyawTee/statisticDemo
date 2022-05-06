@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".investor.InvestorCategoryActivity">
 
     <ProgressBar
+        android:id="@+id/investor_category_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/investor_category_progress_bar" />
+        android:layout_centerInParent="true" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/category_toolbar"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-       android:layout_margin="20dp"
+        android:layout_margin="20dp"
         android:src="@drawable/ic_add" />
 
 </RelativeLayout>

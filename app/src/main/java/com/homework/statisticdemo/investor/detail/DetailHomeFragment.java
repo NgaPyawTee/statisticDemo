@@ -23,6 +23,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.homework.statisticdemo.R;
 import com.homework.statisticdemo.model.Investor;
 import com.squareup.picasso.Picasso;
@@ -94,14 +96,14 @@ public class DetailHomeFragment extends Fragment {
                 DeleteSubCollection();
                 DeleteCollection();
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                StorageReference deleRef = FirebaseStorage.getInstance().getReference(name.getText().toString());
+                deleRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void run() {
+                    public void onSuccess(Void unused) {
                         Toast.makeText(getActivity(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
                         getActivity().finish();
                     }
-                }, 3000);
+                });
             }
         });
 
@@ -112,32 +114,32 @@ public class DetailHomeFragment extends Fragment {
     }
 
     private void DeleteSubCollection() {
-        FirebaseFirestore.getInstance().collection("Investors/"+id+"/First Date").get()
+        FirebaseFirestore.getInstance().collection("Investors/" + id + "/First Date").get()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (QueryDocumentSnapshot qs : task.getResult()){
-                            FirebaseFirestore.getInstance().collection("Investors/"+id+"/First Date").document(qs.getId()).delete();
+                        for (QueryDocumentSnapshot qs : task.getResult()) {
+                            FirebaseFirestore.getInstance().collection("Investors/" + id + "/First Date").document(qs.getId()).delete();
                         }
                     }
                 });
 
-        FirebaseFirestore.getInstance().collection("Investors/"+id+"/Second Date").get()
+        FirebaseFirestore.getInstance().collection("Investors/" + id + "/Second Date").get()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (QueryDocumentSnapshot qs : task.getResult()){
-                            FirebaseFirestore.getInstance().collection("Investors/"+id+"/Second Date").document(qs.getId()).delete();
+                        for (QueryDocumentSnapshot qs : task.getResult()) {
+                            FirebaseFirestore.getInstance().collection("Investors/" + id + "/Second Date").document(qs.getId()).delete();
                         }
                     }
                 });
 
-        FirebaseFirestore.getInstance().collection("Investors/"+id+"/Final Date").get()
+        FirebaseFirestore.getInstance().collection("Investors/" + id + "/Final Date").get()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (QueryDocumentSnapshot qs : task.getResult()){
-                            FirebaseFirestore.getInstance().collection("Investors/"+id+"/Final Date").document(qs.getId()).delete();
+                        for (QueryDocumentSnapshot qs : task.getResult()) {
+                            FirebaseFirestore.getInstance().collection("Investors/" + id + "/Final Date").document(qs.getId()).delete();
                         }
                     }
                 });
@@ -155,7 +157,7 @@ public class DetailHomeFragment extends Fragment {
 
     private void RetrieveData() {
         collRef.document(bundlePass)
-                .get().addOnSuccessListener(getActivity(),new OnSuccessListener<DocumentSnapshot>() {
+                .get().addOnSuccessListener(getActivity(), new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 progressBar.setVisibility(View.GONE);
@@ -181,21 +183,15 @@ public class DetailHomeFragment extends Fragment {
                 cashProfit.setText(documentSnapshot.getString("cashProfit"));
                 totalProfit.setText(documentSnapshot.getString("preProfit"));
 
-                if (documentSnapshot.getString("imgUrlOne").equals("")){
-                    return;
-                }else{
+                if (!documentSnapshot.getString("imgUrlOne").equals("")) {
                     Picasso.get().load(documentSnapshot.getString("imgUrlOne")).into(imageView1);
                 }
 
-                if (documentSnapshot.getString("imgUrlTwo").equals("")){
-                    return;
-                }else{
+                if (!documentSnapshot.getString("imgUrlTwo").equals("")) {
                     Picasso.get().load(documentSnapshot.getString("imgUrlTwo")).into(imageView2);
                 }
 
-                if (documentSnapshot.getString("imgUrlThree").equals("")){
-                    return;
-                }else{
+                if (!documentSnapshot.getString("imgUrlThree").equals("")) {
                     Picasso.get().load(documentSnapshot.getString("imgUrlThree")).into(imageView3);
                 }
             }
